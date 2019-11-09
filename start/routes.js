@@ -13,12 +13,12 @@ Route.resource('/posts', 'PostController')
 
 Route.get('/posts', 'PostController.index').middleware([
   'auth',
-  'can:read-posts'
+  'can:(read-posts || read-private-posts)'
 ])
 
 Route.get('/posts/:id', 'PostController.show').middleware([
   'auth',
-  'can:read-posts'
+  'can:(read-posts || read-private-posts)'
 ])
 
 Route.resource('/permissions', 'PermissionController')
